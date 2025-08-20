@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--primary-bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register-container {
+    background: #0c0b0e;
+    padding: calc(var(--spacing) * 2);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+}
+.register-title {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: var(--spacing);
+}
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+label {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    background: var(--input-bg);
+    font-size: var(--font-size);
+    transition: border-color 0.2s;
+}
+input:focus {
+    border-color: var(--input-focus);
+    outline: none;
+}
+.register-btn {
+    background: var(--button-bg);
+    color: var(--button-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.9rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+.register-btn:hover {
+    background: var(--button-hover-bg);
+}
+@media (max-width: 500px) {
+    .register-container {
+        padding: var(--spacing);
+        max-width: 95vw;
+    }
+    .register-title {
+        font-size: 1.5rem;
+    }
+}

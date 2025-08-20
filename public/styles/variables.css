@@ -1,0 +1,16 @@
+/* CSS Variables for centralized theming */
+:root {
+    --primary-bg: #181a20;
+    --primary-color: #f1f1f1;
+    --accent-color: #4f8cff;
+    --input-bg: #23262f;
+    --input-border: #353945;
+    --input-focus: #4f8cff;
+    --button-bg: #4f8cff;
+    --button-color: #fff;
+    --button-hover-bg: #2563eb;
+    --border-radius: 1.2rem;
+    --box-shadow: 0 4px 24px rgba(0,0,0,0.32);
+    --spacing: 1.2rem;
+    --font-size: 1rem;
+}
