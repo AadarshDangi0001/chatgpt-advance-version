@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
 
+    // Connect to socket.io server
+    const socket = io();
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const text = input.value.trim();
@@ -18,14 +21,21 @@ document.addEventListener('DOMContentLoaded', function() {
         messages.appendChild(userMsg);
         messages.scrollTop = messages.scrollHeight;
         input.value = '';
-        // Simulate bot reply (replace with real backend call)
-        setTimeout(() => {
-            const botMsg = document.createElement('div');
-            botMsg.className = 'message bot';
-            botMsg.textContent = 'This is a demo bot reply.';
-            messages.appendChild(botMsg);
-            messages.scrollTop = messages.scrollHeight;
-        }, 700);
+
+        try {
+            socket.emit('ai-message', text);
+        } catch (error) {
+            console.error('Socket error:', error);
+        }
+    });
+
+    // Listen for AI response
+    socket.on('ai-message-response', function(result) {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'message bot';
+        botMsg.textContent = result;
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
     });
 
     function openSidebar() {
