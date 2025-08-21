@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Home</title>
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/home.css">
+</head>
+<body>
+    <div class="chatgpt-container">
+        <button class="menu-icon" id="menu-icon" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="sidebar-overlay hide" id="sidebar-overlay"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Chats</h2>
+                <button class="new-chat-btn">+ New Chat</button>
+            </div>
+            <ul class="chat-list">
+                <!-- Example chat items, replace with dynamic content -->
+                <li class="chat-item active">Welcome to ChatGPT</li>
+                <li class="chat-item">Project Ideas</li>
+                <li class="chat-item">Code Review</li>
+                <li class="chat-item">Travel Plans</li>
+            </ul>
+        </aside>
+        <main class="chat-main">
+            <div class="chat-header">
+                <h1>ChatGPT</h1>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Example messages, replace with dynamic content -->
+                <div class="message user">Hi, ChatGPT!</div>
+                <div class="message bot">Hello! How can I assist you today?</div>
+            </div>
+            <form class="chat-input-form" id="chat-input-form" autocomplete="off">
+                <input type="text" id="chat-input" name="message" placeholder="Send a message..." required />
+                <button type="submit" class="send-btn">➤</button>
+            </form>
+        </main>
+    </div>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+    <script>
+        const socket = io();
+       
+    </script>
+    <script src="/scripts/home.js"></script>
+</body>
+</html>

@@ -6,6 +6,8 @@ export const getRegisterController = (req, res) => {
   res.render("register");
 };
 
+
+
 export const postRegisterController = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -33,14 +35,8 @@ export const postRegisterController = async (req, res) => {
 
   res.cookie("token", token);
 
-  return res.status(201).json({
-    message: "User registered successfully",
-    user: {
-      id: user._id,
-      username: user.username,
-      email: user.email,
-    },
-  });
+  return res.redirect('/'); 
+
 };
 
 export const getLoginController = (req, res) => {
@@ -76,13 +72,5 @@ export const postLoginController = async (req, res) => {
   });
   res.cookie("token", token);
 
-  return res.status(200).json({
-    message: "Login successful",
-    user: {
-      id: user._id,
-      username: user.username,
-      email: user.email,
-    },
-    token
-  });
+  return res.redirect('/'); 
 }

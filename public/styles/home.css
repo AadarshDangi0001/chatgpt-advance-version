@@ -1,0 +1,287 @@
+/* Menu icon styles */
+.menu-icon {
+    display: none;
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 1002;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: none;
+    border: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.menu-icon span {
+    display: block;
+    width: 2rem;
+    height: 0.3rem;
+    margin: 0.3rem 0;
+    background: #fff;
+    border-radius: 0.2rem;
+    transition: 0.3s;
+}
+
+@media (max-width: 600px) {
+    .menu-icon {
+        display: flex;
+        position: absolute;
+        top: 1.2rem;
+        left: 1.2rem;
+        z-index: 1002;
+    }
+    .sidebar {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: -100vw;
+        width: 80vw;
+        max-width: 320px;
+        height: 100vh;
+        z-index: 1001;
+        background: var(--sidebar-bg);
+        box-shadow: 2px 0 16px rgba(0,0,0,0.25);
+        transition: left 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.3);
+        z-index: 1000;
+        transition: opacity 0.3s;
+    }
+    .sidebar-overlay.hide {
+        display: none;
+    }
+    .chat-main {
+        width: 100vw;
+        min-width: 0;
+    }
+    .chat-header {
+        padding: 1rem 1rem 0.5rem 3.5rem;
+    }
+    .chat-messages {
+        padding: 1rem;
+    }
+    .chat-input-form {
+        padding: 0.7rem 1rem;
+    }
+}
+/* ChatGPT-like Home Page Styles */
+:root {
+    --sidebar-width: 270px;
+    --sidebar-bg: #202123;
+    --sidebar-header-bg: #343541;
+    --sidebar-text: #ececf1;
+    --sidebar-active: #353740;
+    --main-bg: #343541;
+    --chat-bg: #444654;
+    --user-msg-bg: #2a2b32;
+    --bot-msg-bg: #444654;
+    --input-bg: #40414f;
+    --input-border: #565869;
+    --send-btn-bg: #4f8cff;
+    --send-btn-hover: #2563eb;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--main-bg);
+    color: var(--sidebar-text);
+}
+
+.chatgpt-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #23232b;
+    min-width: 200px;
+    max-width: 350px;
+}
+.sidebar-header {
+    background: var(--sidebar-header-bg);
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--sidebar-text);
+}
+.new-chat-btn {
+    background: var(--send-btn-bg);
+    color: #fff;
+    border: none;
+    border-radius: 0.7rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.new-chat-btn:hover {
+    background: var(--send-btn-hover);
+}
+.chat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+.chat-item {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    color: var(--sidebar-text);
+    border-bottom: 1px solid #23232b;
+    transition: background 0.2s;
+}
+.chat-item.active, .chat-item:hover {
+    background: var(--sidebar-active);
+}
+
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--main-bg);
+    position: relative;
+}
+.chat-header {
+    padding: 1.5rem 2rem 1rem 2rem;
+    border-bottom: 1px solid #23232b;
+}
+.chat-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #fff;
+}
+.chat-messages {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background: var(--chat-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.message {
+    max-width: 70%;
+    padding: 1rem 1.3rem;
+    border-radius: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    word-break: break-word;
+}
+.message.user {
+    align-self: flex-end;
+    background: var(--user-msg-bg);
+    color: #fff;
+}
+.message.bot {
+    align-self: flex-start;
+    background: var(--bot-msg-bg);
+    color: #ececf1;
+}
+.chat-input-form {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background: var(--main-bg);
+    border-top: 1px solid #23232b;
+}
+#chat-input {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    border-radius: 1.2rem;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: #fff;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+#chat-input:focus {
+    border-color: var(--send-btn-bg);
+}
+.send-btn {
+    background: var(--send-btn-bg);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.send-btn:hover {
+    background: var(--send-btn-hover);
+}
+
+@media (max-width: 900px) {
+    .chatgpt-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100vw;
+        max-width: 100vw;
+        min-width: 0;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid #23232b;
+        height: auto;
+    }
+    .sidebar-header, .chat-list {
+        flex: 1;
+    }
+    .chat-main {
+        min-height: 60vh;
+    }
+}
+@media (max-width: 600px) {
+    .chatgpt-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        display: none;
+    }
+    .chat-main {
+        width: 100vw;
+        min-width: 0;
+    }
+    .chat-messages {
+        padding: 1rem;
+    }
+    .chat-header {
+        padding: 1rem 1rem 0.5rem 1rem;
+    }
+    .chat-input-form {
+        padding: 0.7rem 1rem;
+    }
+}
